@@ -4,30 +4,46 @@
 
 {% block content %}
 <div class="container">
-	<form action="http://localhost:5000" method="post">
+	<form action="http://localhost:5000" method="post" data-toggle="validator" role="form">
 	  <div class="form-group">
  		<label for="usr">Name:</label>
-  		<input type="text" class="form-control" id="usr" name="user_tag">
+  		<input type="text" class="form-control" id="usr" name="user_tag" required>
 	  </div>
 
 	  {% if colors %}
 	  	<div class="form-group">
 	 
 	  		<label for="color">Select color: </label>
-	   	<div id="color_pallet">
+	   		<div id="color_pallet">
 	  	
-	  	{% for i in colors %}
-	  		<button type="button" class="btn btn-primary btn-md" style="background-color:{{i}}">  </button>
+	  		{% for i in colors %}
+	  			<button type="button" onclick="reactClick(event)" class="btn btn-primary btn-lg" style="background:{{i}}">  </button>
 	
 	  		
-	  	{% endfor %}
-	  	{% endif %}
+	  		{% endfor %}
+	  		</div>
+	  {% endif %}
 
-	  	</div>
+	  	<input type="hidden" name="hidden_color_field" id="hide">
 		<button type="submit" class="btn btn-primary">Submit</button>
-		<div class="rectangle">Hello</div>
 	</form>
 </div>
+
+<script>
+count=0
+var dict=[]
+function reactClick(event)
+{
+
+	var x=event.target.style.background
+	dict.fill(x)
+	count++;onclick
+	
+	document.getElementById("hide").value+=x
+	
+}
+
+</script>
 
 
 

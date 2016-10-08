@@ -10,9 +10,13 @@ Bootstrap(app)
 
 @app.route('/', methods=['POST','GET'])
 def index():
+	colors=color_hex_values()
 	if request.method=='POST':
 		tags_searched=[]
 		user_input=request.form['user_tag']
+		color_input=request.form['hidden_color_field']
+		print(user_input)
+		print(color_input)
 		tags_searched=user_input.split(',') #split the text using ','
 		valid_word=False #Flag to check if all the words entered by the user is valid
 		current_word=''
@@ -33,7 +37,7 @@ def index():
 		
 		return render_template('form.html',message=message,valid_word=valid_word,colors=colors)
 
-	colors=color_hex_values()
+	
 
 	return render_template('form.html',valid_word=False,colors=colors)
 		
