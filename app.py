@@ -31,9 +31,11 @@ def index():
 			message=current_word+" does not have a valid meaning!"
 
 		
-		return render_template('form.html',message=message,valid_word=valid_word)
+		return render_template('form.html',message=message,valid_word=valid_word,colors=colors)
 
-	return render_template('form.html',valid_word=False)
+	colors=color_hex_values()
+
+	return render_template('form.html',valid_word=False,colors=colors)
 		
 
 def color_hex_values(): #this functions returns a list of hexadecimal values for colors
